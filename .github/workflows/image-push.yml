@@ -10,9 +10,6 @@ env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_REGION: ${{ secrets.AWS_REGION }}
-  ECR_REPOSITORY: betvictor_ecr
-  ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-  IMAGE_TAG: ${{ github.sha }}
 #  KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
 #  KUBE_NAMESPACE: production
 
@@ -41,6 +38,10 @@ jobs:
         uses: docker/setup-buildx-action@master
 
       - name: Build & Push Image
+        env:
+          ECR_REPOSITORY: betvictor_ecr
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
         run: |
           docker build \
             -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
