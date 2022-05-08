@@ -50,7 +50,7 @@ jobs:
       - name: Run kubectl
         uses: nikosch86/github-action-eks-kubectl@main
         with:
-          command: "apply application.yaml"
+          command: "apply -f application.yaml"
         env:
           EKS_CLUSTER: bvc_eks_cluster
 
