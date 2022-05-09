@@ -48,7 +48,7 @@ spec:
 
 ---
 
-apiVersion: autoscaling/v2
+apiVersion: autoscaling.k8s.io/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: betvictor-HPA
