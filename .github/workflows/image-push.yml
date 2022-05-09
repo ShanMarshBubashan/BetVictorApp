@@ -49,7 +49,7 @@ jobs:
 
       - name: Update image in yaml with tag
         run: |
-          sed -i 's/^git_sha_id_of_commmit/{{ env.IMAGE_TAG }}/' application.yaml
+          sed -i 's/^git_sha_id_of_commmit/${{ env.IMAGE_TAG }}/' application.yaml
           cat application.yaml
 
       - name: Run kubectl

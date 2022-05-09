@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+/Infrastructure/.terraform/
+/Infrastructure/.terraform.lock.hcl
+/Infrastructure/kubeconfig_bvc_eks_cluster
+/Infrastructure/terraform.tfstate
+/Infrastructure/terraform.tfstate.backup
