@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: betvictor
-          image: 793380206298.dkr.ecr.eu-west-1.amazonaws.com/betvictor_ecr:${{ github.sha }}
+          image: 793380206298.dkr.ecr.eu-west-1.amazonaws.com/betvictor_ecr:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 9000
@@ -48,30 +48,19 @@ spec:
 
 ---
 
-#apiVersion: autoscaling/v2
-#kind: HorizontalPodAutoscaler
-#metadata:
-#  name: betvictor-HPA
-#  namespace: default
-#spec:
-#  targetRef:
-#    apiVersion: apps/v1
-#    kind: Deployment
-#    name: betvictor
-#  behavior:
-#    scaleDown:
-#      policies:
-#        - type: Pods
-#          value: 2
-#        - type: Percent
-#          value: 30
-#      selectPolicy: Min
-#      stabilizationWindowSeconds: 300
-#    scaleUp:
-#      policies:
-#        - type: Pods
-#          value: 6
-#        - type: Percent
-#          value: 75
-#      selectPolicy: Max
-#      stabilizationWindowSeconds: 0
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: betvictor-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: betvictor
+  minReplicas: 2
+  maxReplicas: 5
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: 80
