@@ -14,12 +14,12 @@ public class basicControllers {
 
     @GetMapping("/")
     public ResponseEntity<String> hello() {
-        return new ResponseEntity<>("Hello Bet Victor !!!", HttpStatus.OK);
+        return new ResponseEntity<>("Hello Bet Victor, I am working good !!!", HttpStatus.OK);
     }
 
     @GetMapping("/health")
     public ResponseEntity<String> health() {
-        return new ResponseEntity<>("Health check success", HttpStatus.OK);
+        return new ResponseEntity<>("Health check success, I am great", HttpStatus.OK);
     }
 
 }
