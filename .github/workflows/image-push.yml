@@ -3,7 +3,7 @@ name: Production pipeline
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ master ]
 
 env:
   RELEASE_REVISION: "pr-${{ github.event.pull_request.head.sha }}"
@@ -11,8 +11,6 @@ env:
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_REGION: ${{ secrets.AWS_REGION }}
   IMAGE_TAG: ${{ github.sha }}
-#  KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-#  KUBE_NAMESPACE: production
 
 jobs:
   build:

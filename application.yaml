@@ -47,6 +47,8 @@ spec:
       targetPort: 9000
 
 ---
+#- Ensure App can scale up and down as needed with load.
+#    - If used CPU usage is over 70%, increase the number of replicas upto 6 with limitation of CPU resources.
 
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
@@ -58,9 +60,9 @@ spec:
     kind: Deployment
     name: betvictor
   minReplicas: 2
-  maxReplicas: 5
+  maxReplicas: 8
   metrics:
     - type: Resource
       resource:
         name: cpu
-        targetAverageUtilization: 80
+        targetAverageUtilization: 70
