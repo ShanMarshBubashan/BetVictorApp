@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: betvictor
-          image: 793380206298.dkr.ecr.eu-west-1.amazonaws.com/betvictor_ecr:latest
+          image: 793380206298.dkr.ecr.eu-west-1.amazonaws.com/betvictor_ecr:git_sha_id_of_commmit
           imagePullPolicy: Always
           ports:
             - containerPort: 9000
