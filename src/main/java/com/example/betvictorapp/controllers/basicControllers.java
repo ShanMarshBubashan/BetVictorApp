@@ -14,7 +14,7 @@ public class basicControllers {
 
     @GetMapping("/")
     public ResponseEntity<String> hello() {
-        return new ResponseEntity<>("Hello Bet Victor, I am working good !!!", HttpStatus.OK);
+        return new ResponseEntity<>("Hello Bet Victor, I am working good", HttpStatus.OK);
     }
 
     @GetMapping("/health")
